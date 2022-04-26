@@ -1,0 +1,2 @@
+# IrisesClass_BP_net
+使用SparkTorch运行BP神经网络进行鸢尾花的分类
