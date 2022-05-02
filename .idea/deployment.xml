@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="root@192.168.10.210:22 password (4)" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@192.168.10.210:22 password (1)" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="root@192.168.10.210:22">
         <serverdata>
@@ -19,7 +19,7 @@
       <paths name="root@192.168.10.210:22 password">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/root/bigdata/python_code/IrisesClass_BP_net" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

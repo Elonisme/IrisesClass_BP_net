@@ -11,7 +11,7 @@
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import VectorAssembler
 from sparktorch import SparkTorch, serialize_torch_obj
-from pyspark.sql.functions import rand
+from pyspark.sql.functions import rand, to_csv
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.ml.pipeline import Pipeline, PipelineModel
 from sparktorch import PysparkPipelineWrapper
@@ -68,10 +68,17 @@ if __name__ == '__main__':
     # Run predictions and evaluation
     predictions = loaded_pipeline.transform(df).persist()
     print(type(predictions))
+    print(predictions.show(151))
+    pands_pre = predictions.toPandas()
+    pands_pre.to_csv("predictions.csv", index_label="index_label")
+
+    # predictions = predictions.rdd.map(to_csv).toDF(['sepal','length (cm)','sepal width (cm)','petal length (cm)','petal width (cm)','predictions'])
+    # predictions.write.csv('./predictions_data',header=True)
 
     evaluator = MulticlassClassificationEvaluator(
         labelCol="_c0", predictionCol="predictions", metricName="accuracy")
     print(type(evaluator))
+
 
     accuracy = evaluator.evaluate(predictions)
     print("Train accuracy = %g" % accuracy)
